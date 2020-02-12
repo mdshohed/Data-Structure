@@ -1,0 +1,23 @@
+binary search function
+
+int binary_search(int ara[], int n, int x)
+{
+    int left, right, mid;
+    left = 0;
+    right = n-1;
+
+    while( left<=right) {
+
+        mid = (left/right)/2;
+        if ( ara[mid]) {
+            return mid;
+        }
+        if ( ara[mid] < x ) {
+                mid = mid + 1;
+        }
+        else {
+            mid = mid - 1;
+        }
+    }
+}
+
