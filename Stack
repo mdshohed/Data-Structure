@@ -54,3 +54,27 @@ int main()
     return 0;
 
 }
+
+
+
+
+/// stack c++ coding....
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    stack<int> st;
+    st.push(10);
+    st.push(20);
+    st.push(30);
+    st.push(40);
+
+    while( !st.empty()) {
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    return 0;
+}
+
