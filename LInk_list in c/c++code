@@ -1,0 +1,25 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int ara[5] = {2,7,4,9,12};
+
+    list<int> li(ara,ara+5);  /// Array copy in list....
+
+    list<int>::iterator it;
+    it = find( li.begin(),li.end(),12);  /// list value_search and find value have iterator..
+
+   // li.erase(it);   /// delete value form list....
+    li.erase(it);
+    if (li.empty()) {
+        cout<<"empty"<<endl;
+    }
+    else{
+        cout<<"felde"<<endl;
+    }
+    for( it = li.begin(); it!=li.end(); it++ ) {
+        cout<<*it<<" ";
+    }
+    return 0;
+}
