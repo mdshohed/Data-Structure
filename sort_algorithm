@@ -25,5 +25,40 @@ int main()
     cout<<endl;
     return 0;
 }
+/// selection_sort...
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int ara[10000];
+
+void selection_sort ( int n) {
+
+    int i,j,t;
+    for ( i = 0; i<n-1; i++) {
+        int index = i;
+        for ( j = i+1; j<n; j++) {
+            if ( ara[index] > ara[j]) {
+                index = j;
+            }
+        }
+        if ( index != j) {
+            t = ara[i];
+            ara[i] = ara[index];
+            ara[index] = t;
+        }
+    }
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    for ( int i = 0; i<n; i++) cin>>ara[i];
+    selection_sort(n);
+    for ( int i = 0; i<n; i++) cout<<ara[i]<<" ";
+    cout<<endl;
+    return 0;
+}
 
 
