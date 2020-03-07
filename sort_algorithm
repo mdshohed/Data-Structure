@@ -60,5 +60,66 @@ int main()
     cout<<endl;
     return 0;
 }
+/// Merge_sort....
 
+#include<bits/stdc++.h>
+using namespace std;
+
+void marge( int ara[], int low, int mid, int hi) {
+    int i, j, k;
+    int n1 = mid - hi;
+    int n2 = hi - mid;
+    int l[50], r[50];
+    for ( i = 0 ; i<n1; i++) {
+        l[i] = ara[low+1];
+    }
+    for ( i = 0 ; i<n2; i++) {
+        r[i] = ara[hi+1];
+    }
+    i = 0;
+    j = 0;
+    k = low;
+    while(  i<n1 && j<n2 ) {
+        if ( l[i] <= r[j]) {
+            ara[k] = l[i];
+            i++;
+        }
+        else {
+            ara[k] = r[j];
+            j++;
+        }
+        k++;
+    }
+    while( i < n1 ) {
+        ara[i] = l[i];
+        i++;
+        k++;
+    }
+    while ( j<n2) {
+        ara[j] = r[j];
+        j++;
+        k++;
+    }
+
+
+}
+void merge_sort( int ara[], int low , int hi) {
+
+    if ( low< hi) {
+        int mid = low + (hi-low)/2;
+        merge_sort( ara, low, mid );
+        merge_sort( ara, mid+1, hi );
+        marge( ara, low, mid , hi );
+    }
+}
+int main() {
+    int ara[100], n;
+    cin>>n;
+    for ( int i = 0; i<n; i++) cin>>ara[i];
+    merge_sort( ara, 0, n-1);
+    for ( int i = 0; i<n; i++) {
+        cout<<ara[i]<<" ";
+    }
+    return 0;
+}
 
