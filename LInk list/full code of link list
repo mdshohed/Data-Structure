@@ -34,7 +34,7 @@ void prepend( int item) {
 
 void delete_node ( int x) {
     Node *current_node = head;
-    Node *previous_node = head;
+    Node *previous_node = NULL;
     while( current_node->data!= x ) {
         previous_node = current_node;
         current_node = current_node->next;
