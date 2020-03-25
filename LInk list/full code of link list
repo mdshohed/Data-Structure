@@ -32,6 +32,25 @@ void prepend( int item) {
     head = temp;
 }
 
+void insert_node( int x) {
+    Node *temp = new node();
+    temp->data = x;
+    if ( head == NULL || (temp->data<head->data)) {
+        temp->next = head;
+        head = temp;
+    }
+    else {
+        Node *current_node = head->next;
+        Node *previous_node = head;
+        while(current_node != NULL && temp->data > current_node->data) {
+            previous_node = current_node;
+            current_node = current_node->next;
+        }
+        previous_node->next = temp;
+        temp->next = current_node;
+    }
+}
+
 void delete_node ( int x) {
     Node *current_node = head;
     Node *previous_node = NULL;
