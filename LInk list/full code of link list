@@ -40,47 +40,53 @@ void insert_node( int x) {
         head = temp;
     }
     else {
+
         Node *current_node = head->next;
         Node *previous_node = head;
-        while(current_node != NULL && temp->data > current_node->data) {
+
+        while( current_node != NULL && temp->data > current_node->data ) {
             previous_node = current_node;
             current_node = current_node->next;
         }
+
         previous_node->next = temp;
         temp->next = current_node;
     }
 }
 
-void delete_node ( int x) {
+void delete_node( int x ) {
+
     Node *current_node = head;
     Node *previous_node = NULL;
-    while( current_node->data!= x ) {
+
+    while( current_node->data != x ) {
+
         previous_node = current_node;
         current_node = current_node->next;
     }
     if ( current_node == head) {
         Node *temp = head;
         head = head->next;
-        free(temp);
+        delete(temp);
     }
     else {
         previous_node->next = current_node->next;
-        free(current_node);
+        delete(current_node);
     }
 }
 
 void search_node(int x) {
     Node *temp  = head;
-    int y = 0;
+    bool y = false;
     while (temp !=NULL) {
         if ( temp->data == x) {
             cout<<"Yes"<<endl;
-            y = 1;
+            y = true;
             break;
         }
         temp = temp->next;
     }
-    if ( y == 0) {
+    if ( y == false) {
         cout<<"No"<<endl;
     }
 }
@@ -99,7 +105,6 @@ int main() {
     append(30);
     append(40);
     append(10);
-    prepend(10);
     prepend(20);
     prepend(40);
     prepend(100);
@@ -107,5 +112,9 @@ int main() {
     delete_node(30);
     print();
     search_node(100);
+    insert_node(43);
+    print();
     return 0;
 }
+
+
