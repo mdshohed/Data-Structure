@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node Node;
+
+struct node{
+    int data;
+    Node *next;
+};
+
+struct node *head;
+
+void append(int x) {
+
+    Node* new_node = (Node*)malloc(sizeof(Node));
+    new_node->data = x;
+    new_node->next = NULL;
+
+    if ( head == NULL) {
+        head = new_node;
+    }
+
+    else {
+        Node *temp = head;
+        while  ( temp ->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = new_node;
+    }
+}
+
+void prepend( int x) {
+    Node *new_node = (Node*)malloc(sizeof(Node));
+    new_node->data = x;
+    new_node->next = head;
+    head = new_node;
+}
+void search_node(int x) {
+    Node *temp = head;
+    int z = 0;
+    while ( temp != NULL) {
+        if ( temp->data == x) {
+            z = 1;
+        }
+        temp = temp->next;
+    }
+    if ( z == 1) {
+        printf("node found\n");
+    }
+    else {
+        printf("node not found\n");
+    }
+}
+
+void print() {
+    Node *temp = head;
+    while( temp != NULL) {
+        printf("%d ",temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    append(6);
+    append(4);
+    append(3);
+    prepend(100);
+    prepend(200);
+    append(10);
+    search_node(3);
+    print();
+}
