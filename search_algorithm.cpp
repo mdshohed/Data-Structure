@@ -8,7 +8,7 @@ int binary_search(int ara[], int n, int x)
 
     while( left<=right) {
 
-        mid = (left/right)/2;
+        mid = (left+right)/2;
         if ( ara[mid]) {
             return mid;
         }
