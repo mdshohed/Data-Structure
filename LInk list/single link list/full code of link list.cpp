@@ -75,20 +75,42 @@ void delete_node( int x ) {
     }
 }
 
-void search_node(int x) {
-    Node *temp  = head;
-    bool y = false;
-    while (temp !=NULL) {
-        if ( temp->data == x) {
-            cout<<"Yes"<<endl;
-            y = true;
+/*bool delete_node(int x ) {
+    Node *temp = head, *prev;
+
+    while ( temp != NULL ) {
+        if(  temp->data == x) {
             break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    if ( head == NULL ) return false;
+
+    else if ( head == temp ) {
+        head = head->next;
+        delete(temp);
+        return true;
+    }
+    else {
+        prev->next = temp->next;
+        delete(temp);
+        return true;
+    }
+}
+*/
+
+bool search_node (int x) {
+
+    int i = 0;
+    Node *temp = head;
+    while( temp != NULL ) {
+        if ( temp->data == x) {
+            return true;
         }
         temp = temp->next;
     }
-    if ( y == false) {
-        cout<<"No"<<endl;
-    }
+    return false;
 }
 
 void print() {
@@ -97,8 +119,7 @@ void print() {
         cout<<temp->data<<" ";
         temp = temp->next;
     }
-    cout <<endl;
-
+    cout <<endl
 }
 
 int main() {
