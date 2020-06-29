@@ -1,41 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct node{
-    int data;
-    struct node* next;
-};
-struct node* head;
+typedef struct node Node;
 
-void append( int n) {
-    struct node* temp = ( struct node*) malloc(sizeof(struct node));
-    temp->data = n;
-    temp->next = NULL;
-    if ( head == NULL ) {
-        head = temp;
+struct node {
+    int data;
+    Node *next;
+};
+
+Node *head = NULL;
+
+void prepend(int value) {
+
+    Node *new_node = new node();
+    new_node->data = value;
+    new_node->next = head;
+    head = new_node;
+
+}
+
+int append(int value) {
+
+    Node *new_node = new node();
+    new_node->data = value;
+    new_node->next = NULL;
+
+    if ( head == NULL) {
+        head = new_node;
     }
-    else{
-        struct node* t;
-        t = head;
-        while (t->next != NULL) {
-            t = t->next;
+    else {
+        Node *temp = head;
+        while( temp->next != NULL ) {
+            temp = temp->next;
         }
-        t->next = temp;
+        temp->next = new_node;
     }
 }
-void print() {
-    struct node* temp;
-    temp = head;
-    while( temp != NULL) {
-        cout<<temp->data<<" ";
+
+int print() {
+
+    Node *temp = head;
+    while ( temp != NULL ) {
+        cout << temp->data << " ";
         temp = temp->next;
     }
+    cout << endl;
 }
+
+
 int main() {
-    head = NULL;
-    append(4);
+
     append(6);
-    append(23);
+    prepend(10);
+    prepend(12);
+    append(3);
+    prepend(30);
     print();
     return 0;
 }
