@@ -1,6 +1,13 @@
-// here i have wrote stack structure , push , pop function in c code....
+/**
+    problem: ...
+    algorithm: Stack
+*/
+
+/// Implementation of c language...
+
 #include<bits/stdc++.h>
 using namespace std;
+
 #define MAX 100
 
 typedef struct {
@@ -33,8 +40,8 @@ int pop(stack1 *s)
     return item;
 }
 
-int main()
-{
+int main(){
+    
     stack1 my_stack;
     int item;
     my_stack.top = 0;
@@ -52,13 +59,10 @@ int main()
     cout<<item<<endl;
 
     return 0;
-
 }
 
 
-
-
-/// stack c++ coding....
+/// Implementation of c++ language...
 
 #include<bits/stdc++.h>
 using namespace std;
