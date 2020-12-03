@@ -16,6 +16,7 @@ void init(int node, int l, int r){
     tree[node] = tree[node*2] + tree[node*2+1];
 }
 
+
 void update(int node, int l, int r, int i, int x){
     if ( i > r || i<l) return ;
     if (i<=l && r<=i) {
@@ -29,6 +30,16 @@ void update(int node, int l, int r, int i, int x){
     update(right,mid+1,r , i, x);
     tree[node] = tree[left] + tree[right];
 }
+
+/**
+int sum(int l,int r,int tl, int tr, int node) {
+    if( tl>r || tr<l ) return 0;
+    if ( tl<=l&&r<=tr) {
+        return tree[node];
+    }
+    int mid = (l+r)/2;
+    return sum(l,mid,tl,tr,node*2)+sum(mid+1,r,tl,tr,node*2+1);
+}*/
 
 int query(int node, int l, int r, int i, int j){
     if ( i > r || j<l) return 0;
