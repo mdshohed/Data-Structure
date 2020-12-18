@@ -1,6 +1,7 @@
 /**
   Algorithm: binary index tree 
   Resource: http://www.shafaetsplanet.com/?p=1961 & https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
+  Time complexity: O(log MaxIdx)
   problem: 
   http://lightoj.com/volume_showproblem.php?problem=1080
   https://www.spoj.com/problems/NICEDAY/
