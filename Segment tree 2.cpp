@@ -43,7 +43,7 @@ int sum(int node, int l, int r , int i, int j, int carry = 0) {
         return tree[node].sum +carry*( r-l+1);
     }
     int mid = (l+r)/2;
-    return sum( node*2, l, mid,i, j,carry*tree[node].prop) + sum( node*2+1, mid+1, r, i, j, carry*tree[node].prop);
+    return sum( node*2, l, mid,i, j,carry+tree[node].prop) + sum( node*2+1, mid+1, r, i, j, carry+tree[node].prop);
 }
 
 int main() {
