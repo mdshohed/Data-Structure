@@ -1,3 +1,6 @@
+/**
+    Reference: http://www.shafaetsplanet.com/?p=1679
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
