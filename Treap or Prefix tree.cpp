@@ -6,7 +6,9 @@ struct node{
     node* next[1000];
     node() {
         endpoint = false;
-        for(int i = 0; i<26; i++) next[i] = NULL;
+        for(int i = 0; i<26; i++) {
+            next[i] = NULL;
+        }
     }
 }*root;
 
