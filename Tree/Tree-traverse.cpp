@@ -1,11 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 typedef struct node Node;
 struct node {
     int data;
     Node *left, *right;
 };
-Node *root;
+
+Node *root = NULL;
+
 void insert_node( int x) {
     Node *new_node = (Node*)malloc(sizeof(Node));
     new_node->data = x;
@@ -59,7 +62,6 @@ void post_order( Node *node) {
     cout<<node->data<< " ";
 }
 int main() {
-    root = NULL;
     insert_node(55);
     insert_node(44);
     insert_node(34);
