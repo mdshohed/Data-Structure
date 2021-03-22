@@ -1,3 +1,4 @@
+//https://www.geeksforgeeks.org/two-dimensional-binary-indexed-tree-or-fenwick-tree/
 #include <bits/stdc++.h>
 using namespace std;
 
