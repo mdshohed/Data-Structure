@@ -3,55 +3,56 @@ using namespace std;
 
 const int mx = 1e4+5;
 int ara[mx];
-int tree[mx*3];
 
-void init(int node, int l, int r){
+struct node {
+    int mn, mx, s, lz; 
+}tree[mx*3]; 
+
+void build(int node, int l, int r){
     if ( l == r) {
-        tree[node] = ara[l];
+        tree[node].mn = ara[l];
+        tree[node].mx = ara[l];
+        tree[node].s = ara[l];
         return ;
     }
     int mid = (l+r)/2;
-    init(node*2, l, mid);
-    init( node*2+1, mid+1,r);
-    tree[node] = tree[node*2] + tree[node*2+1];
+    build(node*2, l, mid);
+    build( node*2+1, mid+1,r);
+    tree[node].s = tree[node*2].s + tree[node*2+1].s;
+    tree[node].mn = min (tree[node*2].mn , tree[node*2+1].mn); 
+    tree[node].mx = max (tree[node*2].mn , tree[node*2+1].mn); 
 }
 
 
 void update(int node, int l, int r, int i, int x){
-    if ( i > r || i<l) return ;
+    if ( r<i || l>i) return ;
     if (i<=l && r<=i) {
-        tree[node] = x;
+        tree[node].s = x;
+        tree[node].mx = x;
+        tree[node].mn = x;
         return;
     }
-    int left = node*2;
-    int right = node*2+1;
     int mid = (l+r)/2;
     update(left, l, mid, i, x);
-    update(right,mid+1,r , i, x);
-    tree[node] = tree[left] + tree[right];
+    update(right,mid+1, r , i, x);
+    tree[node].s = tree[node*2].s + tree[node*2+1].s;
+    tree[node].mn = min (tree[node*2].mn , tree[node*2+1].mn); 
+    tree[node].mx = max (tree[node*2].mn , tree[node*2+1].mn);
 }
 
-/**
-int sum(int l,int r,int tl, int tr, int node) {
-    if( tl>r || tr<l ) return 0;
-    if ( tl<=l&&r<=tr) {
-        return tree[node];
-    }
-    int mid = (l+r)/2;
-    return sum(l,mid,tl,tr,node*2)+sum(mid+1,r,tl,tr,node*2+1);
-}*/
 
-int query(int node, int l, int r, int i, int j){
+
+int qry(int node, int l, int r, int i, int j){
     if ( i > r || j<l) return 0;
     if (i<=l && r<=j) {
-        return tree[node];
+        return tree[node].mx;
+        //return tree[node].mn;
+        //return tree[node].s;
     }
-    int left = node*2;
-    int right = node*2+1;
     int mid = (l+r)/2;
-    int p = query(left, l, mid, i , j);
-    int q = query(right,mid+1,r , i , j);
-    return p+q;
+    //return  min( query(left, l, mid, i , j),query(right,mid+1,r , i , j));
+    //return  max( query(left, l, mid, i , j),query(right,mid+1,r , i , j));
+    return qry( node*2,l, mid, i, j) + qry( node*2+1, mid+1, r, i,j ); 
 }
 
 int main(){
