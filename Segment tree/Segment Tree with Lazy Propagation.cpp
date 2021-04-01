@@ -9,6 +9,18 @@ struct node {
     ll s,lz,mn, mx;
 }st[mxN*3];
 
+void propagate( int node, int l, int r) {
+    if ( st[node].lz!=0 ) {
+        st[node].s += (r-l+1)*st[node].lz;
+
+        if  ( l!=r ) {
+            st[node*2].lz += st[node].lz;
+            st[node*2+1].lz += st[node].lz;
+        }
+        st[node].lz = 0;
+    }
+}
+
 void build(int node, int l, int r) {
     if ( l==r) {
         st[node].s = ara[l];
@@ -23,21 +35,12 @@ void build(int node, int l, int r) {
 
 void update(int node, int l, int r, int i, int j, int x) {
 
-    if( st[node].lz!=0 ) {
-        st[node].s +=st[node].lz;
-        if ( l!=r ) {
-            st[node*2].s += st[node].lz;
-            st[node*2+1].s += st[node].lz;
-        }
-        st[node].lz = 0;
-    }
+    propagate( node, l, r);
     if (  r<i || l>j || l>r ) return;
+
     if ( i<=l&&r<=j ) {
-        st[node].s +=x;
-        if( l!=r ) {
-            st[node*2].lz +=x;
-            st[node*2+1].lz +=x;
-        }
+        st[node].lz +=x;
+        propagate( node, l, r);
         return;
     }
     ll mid = (l+r)/2;
@@ -48,14 +51,7 @@ void update(int node, int l, int r, int i, int j, int x) {
 
 ll qry(int node, int l, int r, int i, int j ) {
     if ( r<i || l>j || l>r ) return 0;
-    if ( st[node].lz !=0 ) {
-        st[node].s += st[node].lz;
-        if  ( l!=r ) {
-            st[node*2].lz += st[node].lz;
-            st[node*2+1].lz += st[node].lz;
-        }
-        st[node].lz = 0;
-    }
+    propagate( node,l,r);
     if ( i<=l && r<=j ) {
         return st[node].s;
     }
