@@ -1,3 +1,4 @@
+// not equal but greater value return 
 int upper_bound(std::vector<int> a, int x) {
 	int l = -1, r = a.size(); 
 	while( r>l+1) {
@@ -9,4 +10,5 @@ int upper_bound(std::vector<int> a, int x) {
 }
 
 //built in function
-int val = upper_bound(all(a),x) - a.begin(); 
+auto it = upper_bound(all(a),x) ; 
+int val = distance( a.begin() - it); 
