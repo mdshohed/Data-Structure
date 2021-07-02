@@ -1,4 +1,6 @@
-int upper_bound(std::vector<int> a, int x) {
+// equal or greater value return lower_bound.
+
+int lower_bound(vector<int> a, int x) {
 	int l = -1, r = a.size(); 
     while( 1+l<r) {
         int m  = ( l+r ) >> 1; 
