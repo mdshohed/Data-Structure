@@ -40,5 +40,18 @@ int main() {
 		cout << (*it1) << endl; 
 		cout << (it1 - ara) << endl; 
 	}
+	
+	// set
+	set<int> s; 
+	cin >> n; 
+	for(int i = 0; i<(int)1e3; i++) {
+		s.insert(rand());
+	}
+	for(int i = 0; i<(int)1e5; i++) {
+		auto it = s.lower_bound(rand());
+		if (it==s.end()) cout << "No" << " "; 
+		else cout << "Yes" << " ";  
+	} 
+	cout << endl; 
 	return 0;
 }
