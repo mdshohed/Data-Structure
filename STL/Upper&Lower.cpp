@@ -2,7 +2,7 @@
 using namespace std; 
 
 int main() {
-	freopen( "inputf.in", "r", stdin); 
+	freopen( "in.txt", "r", stdin); 
 	int n; 
 	cin >> n;
 	std::vector<int> a(n);
@@ -11,17 +11,34 @@ int main() {
 
 	auto it = lower_bound( a.begin(),a.end(), 5);    
 	if (it==a.end()) {
-		cout << "not found" << endl; 
+		cout << "lower value not found" << endl; 
 	}
 	else {
 		cout << (*it) << endl;
 		cout << "Position: " << it - a.begin() << endl; 
 	} 
 	it = upper_bound( a.begin(), a.end(), 5); 
-	if (it==a.end()) cout << "not found" << endl;  
+	if (it==a.end()) cout << "Upper value not found" << endl;  
 	else {
 		cout << (*it) << endl;
 		cout << "Position: " << it - a.begin() << endl; 
+	}
+
+	cin >> n;
+	int ara[n]; 
+	for(int i = 0; i<n; i++) cin >> ara[i]; 
+	cout << (binary_search(ara,ara+n, 3)? "yes": "no") << endl;
+	int *it1 = lower_bound(ara, ara+n, 7); 
+	if (it1 == ara+n) cout << "lower value not found" << endl; 
+	else {
+		cout << (*it1) << endl; 
+		cout << (it1 - ara) << endl; 
+	} 
+	it1 = upper_bound(ara, ara+n, 25); 
+	if (it1==ara+n) cout << "Upper value not found" << endl; 
+	else {
+		cout << (*it1) << endl; 
+		cout << (it1 - ara) << endl; 
 	}
 	return 0;
 }
