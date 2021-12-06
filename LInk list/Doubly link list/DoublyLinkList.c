@@ -193,3 +193,12 @@ int main() {
     }
     return 0; 
 }
+
+/*void initializeList()
+void insertBegin(int item)
+void insertLast(int item)
+void printAll()
+void deleteFirstOccurrence(int item)
+void deleteLastOccurrence(int item)
+void deleteFirstItem() 
+void deleteLastItem()*/

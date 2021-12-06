@@ -307,6 +307,19 @@ int main(){
 }
 
 
+/*void initializeList()
+int insertItemBegin(int item)
+struct listNode* searchItem(int item)
+int GetItem(int position)
+void PrintALL()
+int deleteFirstOccurrence(int item)
+int insertItemLast(int item)
+int insertItemAT(int position, int item)
+int NumOfItems(int item)
+int deleteALLOccurrence(int item)
+int deleteLastOccurrence(int item) 
+int deleteFirstItem()
+int deletelastItem()*/
 
 /*
 input:
